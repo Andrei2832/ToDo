@@ -1,0 +1,100 @@
+body {
+    background: #faf8f8;
+    color: #333;
+    font-family: Lato, sans-serif;
+}
+.container{
+    width: 600px;
+    margin: 30px auto ;
+}
+p > label{
+    font-size: 30px;
+    font-weight: bold;
+    padding: 20px 0 10px 0;
+}
+
+#AddToDo{
+    font-size: 24px;
+    font-family: Arial, serif;
+    resize: none;
+    padding: 5px;
+    overflow: hidden;
+    box-sizing: border-box;
+    height: 40px;
+    max-height: 400px;
+    width: 600px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border-width: 2px;
+    border-color: black;
+}
+h3 {
+    font-weight: 700;
+    font-size: 18px;
+    border-bottom: 2px solid #333;
+    padding: 20px 0 10px;
+    margin: 0;
+}
+.Task{
+    font-size: 18px;
+    font-family: Arial, serif;
+    resize: none;
+    padding: 5px;
+    overflow: hidden;
+    box-sizing: border-box;
+    height: 40px;
+    max-height: 500px;
+    width: 500px;
+    margin-left: 50px;
+    border-radius: 5px;
+    border-width: 2px;
+    border-color: black;
+}
+button{
+    background-color: transparent;
+    border: transparent;
+}
+p > button{
+    font-size: 20px;
+    margin: 0 0 0 500px ;
+}
+p > button:hover{
+    color: grey;
+}
+.checkbox{
+    position: absolute;
+    width: 30px;
+    -ms-transform: scale(2);
+    transform: scale(1.5);
+    margin: 10px 0 0 0;
+}
+.Delete{
+    margin: 0 0 0 20px ;
+    font-size: 20px;
+    color: red;
+    position: absolute;
+    visibility: hidden;
+}
+.Delete:hover{
+    color: #a40b0b;
+}
+.ElementListTasks:hover .Delete{
+    visibility: visible;
+}
+.FinishedListTasks:hover .Delete{
+    visibility: visible;
+}
+.FinishedListTasks .Task{
+    text-decoration: line-through;
+    color: grey;
+    border-color: grey;
+    border-width: 2px;
+}
+li{
+    list-style-type: none;
+    margin-bottom: 10px;
+}
+ul{
+    margin-left: 0;
+    padding-left: 0;
+}
