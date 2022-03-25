@@ -8,14 +8,16 @@
 </head>
 <body>
     <div class="container">
-        <p>
-            <label>ДОБАВИТЬ ЗАДАЧУ</label>
-            <textarea class="Text" id="AddToDo" placeholder="Введите задачу!"></textarea>
-            <button onclick="FunAddToDo()">Добавить </button>
-        </p>
+        <div class="add-to-do">
+            <div class="subtitle">ДОБАВИТЬ ЗАДАЧУ</div>
+            <input class="add-to-do__text-task" id="add-to-do__text-task" placeholder="Введите задачу!">
+            <button class="add-to-do__button-add" id="add-to-do__button-add">Добавить </button>
+        </div>
 
-        <h3>ЗАДАЧИ</h3>
-        <ul class="ListTasks" id="ListTasks"></ul>
+        <div class="tasks">
+            <div class="subtitle">ЗАДАЧИ</div>
+            <ul class="tasks__list-tasks" ></ul>
+        </div>
     </div>
     <script src="JS.js"></script>
 </body>

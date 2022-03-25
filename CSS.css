@@ -1,100 +1,86 @@
-body {
-    background: #faf8f8;
-    color: #333;
-    font-family: Lato, sans-serif;
+body{
+    background-color: #faf8f8;
 }
 .container{
     width: 600px;
-    margin: 30px auto ;
-}
-p > label{
-    font-size: 30px;
-    font-weight: bold;
-    padding: 20px 0 10px 0;
+    margin: 30px auto;
 }
 
-#AddToDo{
-    font-size: 24px;
+.subtitle{
     font-family: Arial, serif;
-    resize: none;
-    padding: 5px;
-    overflow: hidden;
-    box-sizing: border-box;
-    height: 40px;
-    max-height: 400px;
-    width: 600px;
-    margin-bottom: 15px;
-    border-radius: 5px;
-    border-width: 2px;
-    border-color: black;
-}
-h3 {
-    font-weight: 700;
-    font-size: 18px;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 20px auto;
     border-bottom: 2px solid #333;
-    padding: 20px 0 10px;
-    margin: 0;
-}
-.Task{
-    font-size: 18px;
-    font-family: Arial, serif;
-    resize: none;
     padding: 5px;
-    overflow: hidden;
-    box-sizing: border-box;
+}
+
+.add-to-do__text-task{
+    font-family: Arial, serif;
+    font-size: 18px;
     height: 40px;
-    max-height: 500px;
-    width: 500px;
-    margin-left: 50px;
+    width: 600px;
     border-radius: 5px;
     border-width: 2px;
     border-color: black;
+    padding: 5px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
 }
-button{
+.add-to-do__button-add{
+    font-size: 20px;
     background-color: transparent;
     border: transparent;
+    color: #333;
+    float: right;
 }
-p > button{
-    font-size: 20px;
-    margin: 0 0 0 500px ;
-}
-p > button:hover{
+.add-to-do__button-add:hover{
     color: grey;
 }
-.checkbox{
-    position: absolute;
-    width: 30px;
-    -ms-transform: scale(2);
-    transform: scale(1.5);
-    margin: 10px 0 0 0;
+
+.tasks__list-tasks{
+    width: 600px;
+    height: auto;
+    padding: 0;
 }
-.Delete{
-    margin: 0 0 0 20px ;
-    font-size: 20px;
+.list-tasks__style{
+    list-style-type: none;
+    padding: 5px;
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+}
+.list-tasks__item_checkbox{
+    transform: scale(2);
+    position: absolute;
+    margin: 10px 10px 0 10px;
+}
+.list-tasks__item_text-task{
+    word-wrap:break-word;
+    display: block;
+    font-family: Arial, serif;
+    font-size: 18px;
+    height: auto;
+    width: 520px;
+    padding: 5px;
+    margin: 0 40px 0 40px;
+    box-sizing: border-box;
+}
+.list-tasks__item_delete-task{
+    position: absolute;
+    margin: 0 0 0 560px;
+    font-size: 24px;
+    background-color: transparent;
     color: red;
-    position: absolute;
     visibility: hidden;
+    border-color: transparent;
 }
-.Delete:hover{
+.list-tasks__item_delete-task:hover{
     color: #a40b0b;
 }
-.ElementListTasks:hover .Delete{
+.list-tasks__style:hover .list-tasks__item_delete-task{
     visibility: visible;
 }
-.FinishedListTasks:hover .Delete{
-    visibility: visible;
-}
-.FinishedListTasks .Task{
-    text-decoration: line-through;
+.list-tasks__style_done > .list-tasks__item_text-task{
     color: grey;
-    border-color: grey;
-    border-width: 2px;
-}
-li{
-    list-style-type: none;
-    margin-bottom: 10px;
-}
-ul{
-    margin-left: 0;
-    padding-left: 0;
+    text-decoration: line-through;
 }

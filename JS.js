@@ -1,79 +1,73 @@
-SizeTextarea();
-DeleteTask();
-
-function SizeTextarea(){
-    let tx = document.getElementsByClassName('Text');
-
-    for (let i = 0; i < tx.length; i++) {
-        tx[i].setAttribute('style', 'height:' + (tx[i].scrollHeight) + 'px;overflow-y:hidden;');
-        tx[i].addEventListener("input", OnInput, false);
+document.querySelector('#add-to-do__text-task').addEventListener('keydown',function (e){
+    if (e.keyCode === 13){
+        fun_add_to_do();
     }
-    function OnInput() {
-        this.style.height = 'auto';
-        this.style.height = (this.scrollHeight) + 'px';
-    }
-}
+})
+document.querySelector('#add-to-do__button-add').onclick = function(){
+    fun_add_to_do();
+};
 
+function fun_add_to_do(){
+    let text_task = document.querySelector('#add-to-do__text-task').value;
 
-function FunAddToDo(){
-    let text = document.getElementById('AddToDo').value;
+    if(text_task !== "" && text_task.trim() !== ''){
+        const list_task = document.querySelector('.tasks__list-tasks');
 
-    if(text !== "" && text.trim() !== ''){
-        const ListTask = document.querySelector('#ListTasks')
-
-        const NewTask = document.createElement('li');
-
-        NewTask.className="ElementListTasks";
-        NewTask.onclick = Done;
+        const new_task = document.createElement('li');
+        new_task.className="list-tasks__style";
 
         const checkbox = document.createElement('input');
-        const task = document.createElement('textarea');
-        const ButDelete = document.createElement('button')
-
         checkbox.type="checkbox";
-        checkbox.className="checkbox";
+        checkbox.className="list-tasks__item_checkbox";
+        checkbox.addEventListener('click',ev => fun_done_task(ev.target));
 
-        task.type="text";
-        task.className="Task Text";
-        task.value=text.trim();
+        const delete_task = document.createElement('button');
+        delete_task.innerText="X";
+        delete_task.className="list-tasks__item_delete-task";
+        delete_task.addEventListener('click',ev => fun_delete_task(ev.target));
 
-        ButDelete.innerText="X";
-        ButDelete.className="Delete";
+        const task = document.createElement('label');
+        task.className="list-tasks__item_text-task";
+        task.textContent=text_task.trim();
+        task.addEventListener('dblclick', ev => fun_change_task(ev.target));
 
-        NewTask.appendChild(checkbox);
-        NewTask.appendChild(task);
-        NewTask.appendChild(ButDelete);
+        new_task.appendChild(checkbox);
+        new_task.appendChild(delete_task);
+        new_task.appendChild(task);
 
-        ListTask.appendChild(NewTask);
+        list_task.appendChild(new_task);
 
-        document.getElementById('AddToDo').value = '';
-
-        SizeTextarea();
-        DeleteTask();
+        document.querySelector('#add-to-do__text-task').value = '';
     }
 
 }
-
-function DeleteTask(){
-    let els = document.getElementsByClassName('Delete');
-
-    for (let i = 0; i < els.length; i++) {
-        els[i].addEventListener('click', function () {
-            this.parentNode.remove();
-        });
-    }
+function fun_change_task(ev){
+    const input = document.createElement('input');
+    input.className = "list-tasks__item_text-task"
+    input.id ="input_change"
+    input.addEventListener('focusout',ev => fun_change_task_done(ev.target));
+    input.addEventListener('keydown',function (e){
+        if (e.keyCode === 13){
+            fun_change_task_done(e.target);
+        }
+    })
+    input.value = ev.textContent;
+    ev.replaceWith(input);
+    document.querySelector('#input_change').focus();
 }
 
+function fun_change_task_done(ev) {
+    const task = document.createElement('label');
+    task.className="list-tasks__item_text-task";
+    task.textContent=ev.value;
+    task.addEventListener('dblclick', ev => fun_change_task(ev.target));
+    ev.replaceWith(task);
+}
 
-function Done(){
-    let els = document.getElementsByClassName('checkbox');
+function fun_delete_task(ev){
+    ev.parentNode.remove();
+}
 
-    for (let i = 0; i < els.length; i++) {
-        if(els[i].checked){
-            els[i].parentNode.className = ('FinishedListTasks');
-        }
-        else  {
-            els[i].parentNode.className = "ElementListTasks"
-        }
-    }
+function fun_done_task(ev){
+    ev.parentNode.className = ev.checked ? 'list-tasks__style list-tasks__style_done':'list-tasks__style';
 }
