@@ -6,11 +6,10 @@ document.querySelector('#add-to-do__text-task').addEventListener('keydown',funct
 document.querySelector('#add-to-do__button-add').onclick = function(){
     fun_add_to_do();
 };
-
 function fun_add_to_do(){
     let text_task = document.querySelector('#add-to-do__text-task').value;
 
-    if(text_task !== "" && text_task.trim() !== ''){
+    if(text_task.trim() !== ''){
         const list_task = document.querySelector('.tasks__list-tasks');
 
         const new_task = document.createElement('li');
